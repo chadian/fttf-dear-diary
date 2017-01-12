@@ -46,6 +46,7 @@
   "dependencies": {
     "ember-bootstrap": "^1.0.0-alpha.2",
     "ember-network": "^0.3.1",
-    "mongodb": "^2.2.19"
+    "mongodb": "^2.2.20",
+    "npm": "^4.0.5"
   }
 }
