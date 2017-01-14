@@ -5,7 +5,7 @@
         <div class="jumbotron">
           <h1>Dear Diary</h1>
           <h2>by @chadian</h2>
-          <img class="img-responsive center-block img-circle" width=150 height=150 src="{{model.avatar_url}}" alt="Blog header image">
+          <img class="img-responsive center-block img-circle" width=150 height=150 src="{{model.avatarUrl}}" alt="Blog header image">
         </div>
       </div>
     </div>
@@ -16,9 +16,11 @@
     <div class="col-md-12">
       <h3>Blog Posts</h3>
       <ul class="posts list-unstyled">
-        <li class="post">
-          {{blog-post}}
-        </li>
+        {{#each model.blogPosts as |post|}}
+          <li class="post">
+            {{blog-post rawTitle=post.title rawDate=post.date rawContent=post.content}}
+          </li>
+        {{/each}}
       </ul>
     </div>
   </div>
