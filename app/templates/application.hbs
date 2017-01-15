@@ -16,12 +16,13 @@
     <div class="col-md-12">
       <h3>Blog Posts</h3>
       <ul class="posts list-unstyled">
-        {{#each model.blogPosts as |post|}}
+        {{#each pagedContent as |post|}}
           <li class="post">
             {{blog-post rawTitle=post.title rawDate=post.date rawContent=post.content}}
           </li>
         {{/each}}
       </ul>
+      {{page-numbers content=pagedContent}}
     </div>
   </div>
 </section>
