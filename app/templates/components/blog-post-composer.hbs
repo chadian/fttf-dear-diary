@@ -1,0 +1,20 @@
+<form {{action "submitForm" on="submit"}}>
+  <div class="col-md-6 well">
+    <div>
+      <label>Title</label>
+      {{input class="form-control" value=title disabled=isDisabled}}
+    </div>
+    <div>
+      <label>Date</label>
+      {{input class="form-control" type="date" value=date disabled=isDisabled}}
+    </div>
+    <div>
+      <label>Content</label>
+      {{textarea class="form-control" value=content disabled=isDisabled}}
+    </div>
+    <button type="submit" disabled={{isDisabled}}>Create new blog post</button>
+  </div>
+</form>
+<div class="col-md-12">
+  {{blog-post rawTitle=title rawDate=date rawContent=content}}
+</div>

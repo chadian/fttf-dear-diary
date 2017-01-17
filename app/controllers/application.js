@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import fetch from "ember-network/fetch";
 import pagedArray from 'ember-cli-pagination/computed/paged-array';
 
 // pagination setup per `ember-cli-pagination` documentation:
@@ -18,5 +19,24 @@ export default Ember.Controller.extend({
 
   // binding the property on the paged array
   // to a property on the controller
-  totalPagesBinding: "pagedContent.totalPages"
+  totalPagesBinding: "pagedContent.totalPages",
+
+  actions: {
+    savePost(data) {
+      const addBlogPost = fetch(`http://${document.location.host}/blog-posts`, {
+        method: "POST",
+        // important to set json headers especially for
+        // express `body-parser` express middleware and
+        //  handling response body
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      // if successful, add to our model and
+      // assume it's there
+      addBlogPost.then(() => {
+        this.get('model.blogPosts').addObject(data);
+      });
+    }
+  }
 });
